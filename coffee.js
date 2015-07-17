@@ -1,6 +1,6 @@
 var coffeeScript = require("coffee-script");
 
-module.exports = function (js) {
+module.exports = function (js, singleline) {
   if (!js) return '';
   if (js === 'delete()') return js;
   var original = js;
@@ -34,5 +34,9 @@ module.exports = function (js) {
   }
   // Include alias
   if (alias) js += alias;
+  if (singleline) {
+    js = js.replace(/\n/g, '');
+    js = js.replace(/;/g, ', ');
+  }
   return js;
 }
