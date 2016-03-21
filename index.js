@@ -56,9 +56,9 @@ function preprocess(source) {
       return '{{' + block + expression + '}}';
     })
     // Make Derby attribues unescaped
-    .replace(/on-(.*?)=(['"])(.*?)\2/gm, function(statement, type, quote, expression) {
+    .replace(/([(, ])on-(.*?)=(['"])(.*?)\3/gm, function(statement, prefix, type, quote, expression) {
       if (options.coffee) expression = coffee(expression, true);
-      return 'on-' + type + '!=\"' + expression + '\"';
+      return prefix + 'on-' + type + '!=\"' + expression + '\"';
     });
 }
 
