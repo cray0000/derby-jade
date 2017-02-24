@@ -45,7 +45,7 @@ function preprocess(source) {
     // find all statements in {{..}}
     .replace(/{{([^\/].*?)}}/g, function(statement, expression) {
       var block = '';
-      if (blockCaptures = /^((?:unescaped|if|else if|unless|each|with|bound|unbound|on)\*?)((?:[ \t]|\().+)?$/.exec(expression)) {
+      if (blockCaptures = /^((?:view|unescaped|if|else if|unless|each|with|bound|unbound|on)\*?)((?:[ \t]|\().+)?$/.exec(expression)) {
         block = blockCaptures[1] + ' ';
         expression = blockCaptures[2];
       } else if (expression === 'else') {
